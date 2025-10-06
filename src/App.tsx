@@ -8,22 +8,32 @@ import { Provider } from 'react-redux'
 import store from './store'
 import PrivateRoute from './components/PrivateRoute'
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from './hooks'
+import { useAppDispatch } from './hooks'
 import { loginSuccess } from './features/authSlice'
 
 function AppRoutes() {
 
   const dispatch = useAppDispatch()
-  const isAdmin = useAppSelector(state => state.auth.isAdmin)
+  const token = localStorage.getItem("token")
+  const username = localStorage.getItem("name")
+  const isAdmin = localStorage.getItem("isAdmin")
   const [loading, setLoading] = useState<boolean>(true)
-
+  
   useEffect(()=> {
-    const token = localStorage.getItem("token")
-    if (token) {
-      dispatch(loginSuccess({token, isAdmin}))
+    let parsedValue = false
+    if (typeof isAdmin === "string") {
+      try {
+        parsedValue = JSON.parse(isAdmin)
+      } catch (error) {
+        parsedValue = false
+      }
+    }
+    if (token && username) {
+      dispatch(loginSuccess({token, isAdmin: parsedValue, username}))
     }
     setLoading(false)
   }, [])
+
 
   if (loading) {
     return(

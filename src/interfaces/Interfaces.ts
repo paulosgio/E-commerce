@@ -6,5 +6,10 @@ export interface ILoginForm {
 export interface IAuth {
     isAuthenticated: boolean,
     token: string | null,
-    isAdmin: boolean 
+    isAdmin: boolean,
+}
+
+export interface IProfile {
+    name: string | null,
+    role: "Admin" | "User"
 }

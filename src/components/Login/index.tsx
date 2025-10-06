@@ -14,14 +14,16 @@ export default function Login() {
         if (user === "paulo" && password === "123") {
             const response = {
                 token: "user",
-                isAdmin: false
+                isAdmin: false,
+                username: user
             }
             dispatch(loginSuccess(response))
             navigate("/home")
         } else if (user === "adm" && password === "321") {
             const response = {
                 token: "adm",
-                isAdmin: true
+                isAdmin: true,
+                username: user
             }
             dispatch(loginSuccess(response))
             navigate("/home")
