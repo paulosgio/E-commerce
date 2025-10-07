@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute'
 import { useEffect, useState } from 'react'
 import { useAppDispatch } from './hooks'
 import { loginSuccess } from './features/authSlice'
+import Product from './components/Product'
 
 function AppRoutes() {
 
@@ -48,6 +49,7 @@ function AppRoutes() {
           <Route path='/' element={<Login/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/home' element={<Home/>}/>
+            <Route path='/home/:id' element={<Product/>}/>
             <Route path='/home/cart' element={<Cart/>}/>
           </Route>
         </Route>
