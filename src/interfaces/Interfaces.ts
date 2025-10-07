@@ -13,3 +13,11 @@ export interface IProfile {
     name: string | null,
     role: "Admin" | "User"
 }
+
+export interface IProducts {
+    name: string,
+    price: number,
+    description: string,
+    image: string,
+    id: string
+}
