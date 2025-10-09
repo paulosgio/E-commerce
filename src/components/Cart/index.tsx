@@ -1,4 +1,5 @@
-import { removeFromCart } from "../../features/cartSlice"
+import { checkout, removeFromCart } from "../../features/cartSlice"
+import { addPurchase } from "../../features/purchasedSlice"
 import { useAppDispatch, useAppSelector } from "../../hooks"
 import Profile from "../Profile"
 
@@ -8,6 +9,11 @@ export default function Cart() {
     const name = localStorage.getItem("name")
     const cart = useAppSelector(param => param.cart) || []
     const dispatch = useAppDispatch()
+
+    function handleCheckout() {
+        dispatch(addPurchase(cart))
+        dispatch(checkout())
+    }
 
     return(
         <>
@@ -30,6 +36,7 @@ export default function Cart() {
                     <p>Sem itens</p>
                 )}
             </ul>
+            <button onClick={handleCheckout}>Checkout</button>
         </>
     )
 }
