@@ -1,15 +1,35 @@
-import { useAppSelector } from "../../hooks"
+import { removeFromCart } from "../../features/cartSlice"
+import { useAppDispatch, useAppSelector } from "../../hooks"
 import Profile from "../Profile"
 
 export default function Cart() {
 
     const isAdmin = useAppSelector(param => param.auth.isAdmin)
     const name = localStorage.getItem("name")
+    const cart = useAppSelector(param => param.cart) || []
+    const dispatch = useAppDispatch()
 
     return(
         <>
             <Profile name={name} role={isAdmin ? "Admin" : "User"}/>
             <h1>Cart</h1>
+            <ul>
+                {cart.length > 0 ? (
+                    cart.map((param, i)=> {
+                        return(
+                            <li key={i}>
+                                <h3>{param.name}</h3>
+                                <h3>{param.description}</h3>
+                                <h3>{param.price}</h3>
+                                <h3>{param.quantity}</h3>
+                                <button onClick={()=> {dispatch(removeFromCart(param.id))}}></button>
+                            </li>
+                        )
+                    })
+                ): (
+                    <p>Sem itens</p>
+                )}
+            </ul>
         </>
     )
 }
