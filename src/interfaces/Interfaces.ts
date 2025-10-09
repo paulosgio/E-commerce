@@ -18,6 +18,10 @@ export interface IProducts {
     name: string,
     price: number,
     description: string,
-    image: string,
+    image?: string,
     id: string
+}
+
+export interface ICart extends IProducts {
+    quantity: number
 }

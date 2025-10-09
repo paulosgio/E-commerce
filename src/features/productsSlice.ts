@@ -50,3 +50,5 @@ const productsSlice = createSlice({
 
 export const { addProduct, deleteProduct, updateProduct } = productsSlice.actions
 export default productsSlice.reducer
+
+//feature para admin
