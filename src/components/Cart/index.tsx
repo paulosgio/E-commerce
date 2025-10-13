@@ -17,6 +17,8 @@ export default function Cart() {
         dispatch(checkout())
     }
 
+    const priceCart = cart.reduce((acum, item)=> acum + item.price * item.quantity, 0)
+
     return(
         <>
             <Profile name={name} role={isAdmin ? "Admin" : "User"}/>
@@ -49,6 +51,7 @@ export default function Cart() {
                     <button onClick={()=> setModalActive(false)}>Nao</button>
                 </>
             )}
+            <h1>Preço total {priceCart}</h1>
         </>
     )
 }
