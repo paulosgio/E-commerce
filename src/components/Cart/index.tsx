@@ -2,13 +2,10 @@ import { useState } from "react"
 import { checkout, removeFromCart } from "../../features/cartSlice"
 import { addPurchase } from "../../features/purchasedSlice"
 import { useAppDispatch, useAppSelector } from "../../hooks"
-import Profile from "../Profile"
 import { useNavigate } from "react-router-dom"
 
 export default function Cart() {
 
-    const isAdmin = useAppSelector(param => param.auth.isAdmin)
-    const name = localStorage.getItem("name")
     const cart = useAppSelector(param => param.cart) || []
     const dispatch = useAppDispatch()
     const [modalActive, setModalActive] = useState<boolean>(false) 
@@ -19,18 +16,10 @@ export default function Cart() {
         dispatch(checkout())
     }
 
-    const logOut = ()=> {
-        localStorage.removeItem("token")
-        localStorage.removeItem("isAdmin")
-        localStorage.removeItem("name")
-        navigate("/")
-    }
-
     const priceCart = cart.reduce((acum, item)=> acum + item.price * item.quantity, 0)
 
     return(
         <>
-            <button onClick={logOut}>sair</button>
             <button onClick={()=> navigate(-1)}>Voltar</button>
             <h1>Cart</h1>
             <ul>
