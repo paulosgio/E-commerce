@@ -8,15 +8,26 @@ export default function Product() {
     const product = data.find(param => param.id === id)
     const navigate = useNavigate()
 
+    const logOut = ()=> {
+        localStorage.removeItem("token")
+        localStorage.removeItem("isAdmin")
+        localStorage.removeItem("name")
+        navigate("/")
+    }
+
     if (!product) {
         return <p>Produto nao encontrado</p>
     }
         return(
-            <ul>
-                <li>{product.name}</li>
-                <li>{product.description}</li>
-                <li>{product.price}</li>
-                <button onClick={()=> navigate(-1)}>voltar</button>
-            </ul>
+            <>
+            <button onClick={logOut}>sair</button>
+            <button onClick={()=> navigate("/home/cart")}>Carrinho</button>
+                <ul>
+                    <li>{product.name}</li>
+                    <li>{product.description}</li>
+                    <li>{product.price}</li>
+                    <button onClick={()=> navigate(-1)}>voltar</button>
+                </ul>
+            </>
         )
 }

@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
 import Layout from './components/Layout'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -45,8 +44,8 @@ function AppRoutes() {
   return(
     <BrowserRouter>
       <Routes>
+        <Route path='/' element={<Login/>}/>
         <Route element={<Layout/>}>
-          <Route path='/' element={<Login/>}/>
           <Route element={<PrivateRoute/>}>
             <Route path='/home' element={<Home/>}/>
             <Route path='/home/:id' element={<Product/>}/>
