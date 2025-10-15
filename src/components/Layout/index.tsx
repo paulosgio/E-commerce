@@ -1,19 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Outlet, useNavigate } from "react-router-dom";
 import Profile from "../Profile";
+import { Toaster } from "sonner";
 
 export default function Layout() {
 
     const navigate = useNavigate()
-    const name = localStorage.getItem("name")
-    const isAdmin = JSON.parse(localStorage.getItem("isAdmin") || "false")
-
-    const logOut = ()=> {
-        localStorage.removeItem("token")
-        localStorage.removeItem("isAdmin")
-        localStorage.removeItem("name")
-        navigate("/")
-    }
 
     return(
         <>
@@ -25,9 +16,10 @@ export default function Layout() {
             </ul>   
             <Profile/>
         </header>
-        <main>
+        <main className="px-2">
             <Outlet/>
         </main>
+        <Toaster/>
         <footer>
             <h1>Footer...</h1>
         </footer>

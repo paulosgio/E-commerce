@@ -4,7 +4,7 @@ import { useAppSelector } from "../../hooks"
 export default function Product() {
 
     const { id } = useParams()
-    const data = useAppSelector(param => param.products) || []
+    const data = useAppSelector(param => param.products.data) || []
     const product = data.find(param => param.id === id)
     const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ export default function Product() {
             <button onClick={logOut}>sair</button>
             <button onClick={()=> navigate("/home/cart")}>Carrinho</button>
                 <ul>
-                    <li>{product.name}</li>
+                    <li>{product.title}</li>
                     <li>{product.description}</li>
                     <li>{product.price}</li>
                     <button onClick={()=> navigate(-1)}>voltar</button>
