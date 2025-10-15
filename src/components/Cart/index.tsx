@@ -27,7 +27,7 @@ export default function Cart() {
                     cart.map((param, i)=> {
                         return(
                             <li key={i}>
-                                <h3>{param.name}</h3>
+                                <h3>{param.title}</h3>
                                 <h3>{param.description}</h3>
                                 <h3>{param.price}</h3>
                                 <h3>{param.quantity}</h3>

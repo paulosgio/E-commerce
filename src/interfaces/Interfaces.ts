@@ -15,11 +15,18 @@ export interface IProfile {
 }
 
 export interface IProducts {
-    name: string,
+    title: string,
     price: number,
     description: string,
     image?: string,
-    id: string
+    id: string,
+    category?: string
+}
+
+export interface IInitialStateProducts {
+    loading: boolean,
+    error: null | string
+    data: null | IProducts[]
 }
 
 export interface ICart extends IProducts {
