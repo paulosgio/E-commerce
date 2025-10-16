@@ -1,12 +1,17 @@
 export interface ILoginForm {
-    user: string,
+    username: string,
     password: string
 }
 
 export interface IAuth {
-    isAuthenticated: boolean,
     token: string | null,
-    isAdmin: boolean,
+    username: string,
+}
+
+export interface IAuthInitialState {
+    loading: boolean,
+    error: string | null
+    data: IAuth | null
 }
 
 export interface IProfile {

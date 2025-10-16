@@ -16,7 +16,7 @@ export default function Layout() {
             </ul>   
             <Profile/>
         </header>
-        <main className="px-2">
+        <main className="px-2 bg-[#F2F0F1]">
             <Outlet/>
         </main>
         <Toaster/>

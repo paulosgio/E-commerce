@@ -10,34 +10,26 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch } from './hooks'
 import { loginSuccess } from './features/authSlice'
 import Product from './components/Product'
+import { LoaderIcon } from 'lucide-react'
+import { cn } from './lib/utils'
 
 function AppRoutes() {
 
   const dispatch = useAppDispatch()
-  const token = localStorage.getItem("token")
-  const username = localStorage.getItem("name")
-  const isAdmin = localStorage.getItem("isAdmin")
   const [loading, setLoading] = useState<boolean>(true)
   
-  useEffect(()=> {
-    let parsedValue = false
-    if (typeof isAdmin === "string") {
-      try {
-        parsedValue = JSON.parse(isAdmin)
-      } catch (error) {
-        parsedValue = false
+    useEffect(() => {
+      const token = localStorage.getItem("token")
+      const username = localStorage.getItem("name")
+      if (token && username) {
+        dispatch(loginSuccess({ token, username }))
       }
-    }
-    if (token && username) {
-      dispatch(loginSuccess({token, isAdmin: parsedValue, username}))
-    }
-    setLoading(false)
-  }, [])
-
+      setLoading(false)
+}, [dispatch])
 
   if (loading) {
     return(
-      <p>carregando...</p>
+      <LoaderIcon className={cn("size-4 animate-spin my-[50vh] mx-auto")}/>
     )
   }
 

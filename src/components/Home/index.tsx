@@ -16,7 +16,10 @@ export default function Home() {
     const dispatch = useAppDispatch()
 
     useEffect(()=> {
-        dispatch(getProducts())
+        const initialize = async()=> {
+            await dispatch(getProducts())
+        }
+        initialize()
     }, [])
 
     return(
