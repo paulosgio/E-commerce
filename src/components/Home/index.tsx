@@ -48,6 +48,7 @@ export default function Home() {
                                                 description,
                                                 id,
                                                 price,
+                                                image,
                                                 quantity: 1
                                             }))}   
                                         }>
@@ -64,10 +65,10 @@ export default function Home() {
                 <CarouselNext className="cursor-pointer hover:scale-125" />
             </Carousel>
         </div>
-            <ul className="grid grid-cols-3 gap-18">
+            <ul className="grid grid-cols-3 gap-6 justify-items-center">
                 {data && data.map(({title, description, id, price, image}, i)=> {
                     return(
-                        <div key={i} className="bg-gray-100 w-sm cursor-pointer rounded-xl shadow-xl px-2 py-4 hover:scale-105 transition duration-150">
+                        <div key={i} className="bg-gray-100 w-sm cursor-pointer rounded-xl shadow-xl px-2 py-4 hover:scale-101 transition duration-150">
                             <li onClick={()=> navigate(`/home/${id}`)} key={i}>
                                 <div className="flex items-center gap-4 mb-4">
                                     <img className="w-26 h-26" src={image} alt="" />
@@ -89,6 +90,7 @@ export default function Home() {
                                                 title,
                                                 description,
                                                 id,
+                                                image,
                                                 price,
                                                 quantity: 1
                                             }))}   

@@ -23,7 +23,7 @@ export default function Profile() {
                         </div>
                     </Avatar>
                 <button onClick={logOut} className="cursor-pointer absolute left-[-50px] opacity-0 translate-x-2 bg-red-500 text-white text-sm px-3 py-2 rounded-xl transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0">
-                    Sair
+                    Exit
                 </button>
             </div>
     )

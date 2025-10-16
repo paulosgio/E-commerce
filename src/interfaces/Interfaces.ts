@@ -23,7 +23,7 @@ export interface IProducts {
     title: string,
     price: number,
     description: string,
-    image?: string,
+    image: string,
     id: string,
     category?: string
 }

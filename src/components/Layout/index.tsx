@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import Profile from "../Profile";
 import { Toaster } from "sonner";
+import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-react";
 
 export default function Layout() {
 
@@ -16,13 +17,19 @@ export default function Layout() {
             </ul>   
             <Profile/>
         </header>
-        <main className="px-2 bg-[#F2F0F1]">
+        <main className="px-2 bg-[#F2F0F1] min-h-screen h-full">
             <Outlet/>
         </main>
         <Toaster/>
-        <footer>
-            <h1>Footer...</h1>
-        </footer>
+        <Footer className="h-26 px-2 py-6 w-full bg-black text-white" container>
+            <FooterCopyright href="#" by=" Ecommerce by Paulo" year={2025} />
+            <FooterLinkGroup className="flex gap-2">
+            <FooterLink href="https://linkedin.com/in/paulo-s%C3%A9rgio-dos-anjos">Linkedin</FooterLink>
+            <FooterLink href="https://github.com/paulosgio">Github</FooterLink>
+            <span>Phone: (74) 9 9919-6607</span>
+            <span>Email: paulosergiodosanjossilvafilho@gmail.com</span>
+            </FooterLinkGroup>
+        </Footer>
         </>
     )
 }
